@@ -50,6 +50,11 @@ resource "aws_elastic_beanstalk_environment" "env" {
         name = "EC2KeyName"
         value = "aalimsee-keypair"
     }
+    setting {
+        namespace = "aws:autoscaling:launchconfiguration"
+        name      = "InstanceType"
+        value     = "t2.micro"
+    }
 /*   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "SecurityGroups"
@@ -83,11 +88,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
     name      = "LoadBalancerType"
     value     = "application"
   }
-  setting {
-    namespace = "aws:autoscaling:launchconfiguration"
-    name      = "InstanceType"
-    value     = "t2.micro"
-  }
+
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBScheme"
